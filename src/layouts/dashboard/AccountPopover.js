@@ -9,6 +9,7 @@ import 'firebase/compat/storage';
 import 'firebase/compat/firestore';
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton } from '@mui/material';
+import Iconify from '../../components/Iconify';
 // components
 import MenuPopover from '../../components/MenuPopover';
 // mocks_
@@ -28,16 +29,29 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
+const getIcon = (name) => <Iconify icon={name} width={22} height={22} />;
+
+
 const MENU_OPTIONS = [
   {
     label: 'Home',
     icon: 'eva:home-fill',
-    linkTo: '/',
+    linkTo: '/app',
   },
   {
-    label: 'Profile',
-    icon: 'eva:person-fill',
-    linkTo: '#',
+    label: 'Request Analysis',
+    linkTo: '/requests',
+    icon: getIcon('fluent:drink-wine-24-filled'),
+  },
+  {
+    label: 'Upload Analysis',
+    linkTo: '/upload',
+    icon: getIcon('ic:baseline-upload-file'),
+  },
+  {
+    label: 'View Analysis',
+    linkTo: '/analysis',
+    icon: getIcon('eva:file-text-fill'),
   },
   {
     label: 'Settings',
@@ -113,7 +127,7 @@ export default function AccountPopover() {
 
         <Stack sx={{ p: 1 }}>
           {MENU_OPTIONS.map((option) => (
-            <MenuItem key={option.label} to={option.linkTo} component={RouterLink} onClick={handleClose}>
+            <MenuItem icon={option.icon} key={option.label} to={option.linkTo} component={RouterLink} onClick={handleClose}>
               {option.label}
             </MenuItem>
           ))}

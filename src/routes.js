@@ -4,7 +4,7 @@ import DashboardLayout from './layouts/dashboard';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 //
 import Blog from './pages/Analysis';
-import User from './pages/Blends';
+import Requests from './pages/Requests';
 import Login from './pages/Login';
 import NotFound from './pages/Page404';
 import Register from './pages/Register';
@@ -18,11 +18,11 @@ import DashboardApp from './pages/DashboardApp';
 export default function Router() {
   return useRoutes([
     {
-      path: '/dashboard',
+      path: '/',
       element: <DashboardLayout />,
       children: [
         { path: 'app', element: <DashboardApp /> },
-        { path: 'blends', element: <User /> },
+        { path: 'requests', element: <Requests /> },
         { path: 'products', element: <Products /> },
         { path: 'analysis', element: <Blog /> },
         { path: 'upload', element: <Upload /> },
