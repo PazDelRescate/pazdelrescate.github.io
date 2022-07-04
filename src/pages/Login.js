@@ -10,6 +10,7 @@ import Page from '../components/Page';
 import { LoginForm } from '../sections/auth/login';
 import AuthSocial from '../sections/auth/AuthSocial';
 
+
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
@@ -38,6 +39,7 @@ const SectionStyle = styled(Card)(({ theme }) => ({
   width: '100%',
   maxWidth: 464,
   display: 'flex',
+  alignItems: 'center',
   flexDirection: 'column',
   justifyContent: 'center',
   margin: theme.spacing(2, 0, 2, 2),
@@ -61,7 +63,7 @@ export default function Login() {
   const mdUp = useResponsive('up', 'md');
 
   return (
-    <Page title="Reaction Lab App: Login">
+    <Page title="ReaktLab: Login">
       <RootStyle>
         <HeaderStyle>
           <div />
@@ -78,17 +80,17 @@ export default function Login() {
 
         {mdUp && (
           <SectionStyle>
-            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5, ml: 5 }}>
-              Hi, Welcome Back
+            <img src="/static/illustrations/ReactionLogo.png" alt="logo" height="250px" width="250px" sx={{ px: 4, mt: 10, mb: 5, ml: 5}}/>
+            <Typography variant="h3" sx={{ px: 1, mt: 2, mb: 5, ml: 0 }}>
+              Welcome Back
             </Typography>
-            <img src="/static/illustrations/ReactionLogo.png" alt="login" />
           </SectionStyle>
         )}
 
         <Container maxWidth="sm">
           <ContentStyle>
             <Typography variant="h4" gutterBottom>
-              Sign in to Reaction
+              Sign in to ReaktLab
             </Typography>
 
             <Typography sx={{ color: 'text.secondary', mb: 5 }}>Enter your details below.</Typography>

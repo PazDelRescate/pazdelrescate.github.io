@@ -11,7 +11,7 @@ import Scrollbar from '../../components/Scrollbar';
 import NavSection from '../../components/NavSection';
 //
 import navConfig from './NavConfig';
-import ReactionLogo from '../../ReactionLogo.png';
+import ReactionLogo from '../../ReactionLogo.PNG';
 
 // ----------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
     >
 
         <Link underline="none" component={RouterLink} to="/">
-            <Avatar src={ReactionLogo} alt="" sx={{ml: 10, mb: 5, mx: 1, mt: 5, height:200, width:200, }}/>
+            <Avatar src={ReactionLogo} alt="" sx={{align: "center", height:300, width:300, }}/>
         </Link>
 
       <NavSection navConfig={navConfig} />
