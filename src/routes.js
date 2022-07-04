@@ -10,6 +10,10 @@ import NotFound from './pages/Page404';
 import Register from './pages/Register';
 import Products from './pages/Products';
 import Upload from './pages/upload';
+import Vineyard from './pages/Vineyard';
+import Daily from './pages/Daily';
+import BrixTemps from './pages/BrixTemps';
+import Monthly from './pages/Monthly';
 import Profile from './pages/Profile';
 import DashboardApp from './pages/DashboardApp';
 
@@ -27,6 +31,10 @@ export default function Router() {
         { path: 'analysis', element: <Blog /> },
         { path: 'upload', element: <Upload /> },
         { path: 'profile', element: <Profile /> },
+        { path: 'daily', element: <Daily /> },
+        { path: 'monthly', element: <Monthly /> },
+        { path: 'brixtemps', element: <BrixTemps /> },
+        { path: 'vineyard', element: <Vineyard /> },
       ],
     },
     {
