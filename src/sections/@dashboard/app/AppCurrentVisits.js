@@ -71,7 +71,7 @@ export default function AppCurrentVisits({ title, subheader, chartColors, chartD
       <CardHeader title={title} subheader={subheader} />
 
       <ChartWrapperStyle dir="ltr">
-        <ReactApexChart type="pie" series={chartSeries} options={chartOptions} height={280} />
+        <ReactApexChart type="pie" series={chartSeries} options={chartOptions} height={300} />
       </ChartWrapperStyle>
     </Card>
   );

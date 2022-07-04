@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
+import { Link  } from 'react-router-dom';
 // components
 import Page from '../components/Page';
 // sections
@@ -22,24 +23,32 @@ export default function DashboardApp() {
     <Page title="Dashboard">
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
+          Analysis Reports
         </Typography>
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Daily Analysis" total={0} icon={'bi:graph-up-arrow'} />
+            <Link style={{textDecoration: 'none'}} to={'/daily'}>
+            <AppWidgetSummary title="Daily Analysis" date='07/04/2022' total={0} icon={'bi:graph-up-arrow'} />
+            </Link>
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Bi-Weekly Analysis" total={0} color="warning" icon={'bi:graph-up-arrow'} />
+            <Link style={{textDecoration: 'none'}} to={'/monthly'}>
+            <AppWidgetSummary title="Monthly FSO2/VA" date='July 2022' total={0} color="warning" icon={'bi:graph-up-arrow'} />
+            </Link>
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Monthly Analysis" total={0} color="error" icon={'bi:graph-up-arrow'} />
+            <Link style={{textDecoration: 'none'}} to={'/brixtemps'}>
+            <AppWidgetSummary title="Brix and Temps" date='Harvest 2022' total={0} color="error" icon={'bi:graph-up-arrow'} />
+            </Link>
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Winemaking Reports" total={0} color="info" icon={'bi:graph-up-arrow'} />
+            <Link style={{textDecoration: 'none'}} to={'/vineyard'}>
+            <AppWidgetSummary title="Vineyard Reports" date='Harvest 2022' color="info" icon={'bi:graph-up-arrow'} />
+            </Link>
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
@@ -103,13 +112,12 @@ export default function DashboardApp() {
           <Grid item xs={12} md={6} lg={4}>
             <AppOrderTimeline
               title="Analysis Today"
-              list={[...Array(5)].map((_, index) => ({
+              list={[...Array(4)].map((_, index) => ({
                 id: faker.datatype.uuid(),
                 title: [
                   'GB/AP Free sulfurs',
                   'Bottling Line QC',
                   'Acid Trials for 21GBCS',
-                  'Fly to the Moon',
                   'Enzymatics',
                 ][index],
                 type: `order${index + 1}`,
@@ -120,13 +128,13 @@ export default function DashboardApp() {
 
           <Grid item xs={12} md={6} lg={8}>
             <AppTasks
-              title="Tasks"
+              title="Daily Tasks"
               list={[
-                { id: '1', label: 'Run Brix/Temp in the Morning' },
-                { id: '2', label: 'Acid Trials' },
-                { id: '3', label: 'Bottling QC StartUp' },
-                { id: '4', label: 'Free SO2' },
-                { id: '5', label: 'Enzymatics' },
+                { id: '1', label: 'Calibrate Instruments' },
+                { id: '2', label: 'Data Entry' },
+                { id: '3', label: 'Run Tests' },
+                { id: '4', label: 'Update Vintrace' },
+                { id: '5', label: 'Clean Laboratory' },
               ]}
             />
           </Grid>
