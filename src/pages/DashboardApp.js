@@ -28,25 +28,25 @@ export default function DashboardApp() {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <Link style={{textDecoration: 'none'}} to={'/daily'}>
+            <Link style={{textDecoration: 'none'}} to={'/Dashboard/daily'}>
             <AppWidgetSummary title="Daily Analysis" date='07/04/2022' total={0} icon={'bi:graph-up-arrow'} />
             </Link>
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <Link style={{textDecoration: 'none'}} to={'/monthly'}>
+            <Link style={{textDecoration: 'none'}} to={'/Dashboard/monthly'}>
             <AppWidgetSummary title="Monthly FSO2/VA" date='July 2022' total={0} color="warning" icon={'bi:graph-up-arrow'} />
             </Link>
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <Link style={{textDecoration: 'none'}} to={'/brixtemps'}>
+            <Link style={{textDecoration: 'none'}} to={'/Dashboard/brixtemps'}>
             <AppWidgetSummary title="Brix and Temps" date='Harvest 2022' total={0} color="error" icon={'bi:graph-up-arrow'} />
             </Link>
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <Link style={{textDecoration: 'none'}} to={'/vineyard'}>
+            <Link style={{textDecoration: 'none'}} to={'/Dashboard/vineyard'}>
             <AppWidgetSummary title="Vineyard Reports" date='Harvest 2022' color="info" icon={'bi:graph-up-arrow'} />
             </Link>
           </Grid>

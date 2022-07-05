@@ -22,7 +22,7 @@ import DashboardApp from './pages/DashboardApp';
 export default function Router() {
   return useRoutes([
     {
-      path: '/',
+      path: '/Dashboard/',
       element: <DashboardLayout />,
       children: [
         { path: 'app', element: <DashboardApp /> },
