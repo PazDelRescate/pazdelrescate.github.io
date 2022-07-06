@@ -63,7 +63,7 @@ export default function LoginForm() {
           const errorMessage = error.message;
           // ..
         });
-        navigate('/Dashboard/app', { replace: true });
+        navigate('/dashboard/app', { replace: true });
     },
   });
 

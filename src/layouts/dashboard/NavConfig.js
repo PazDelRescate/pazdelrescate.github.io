@@ -11,22 +11,22 @@ const getIcon = (name) => <Iconify icon={name} width={22} height={22} />;
 const navConfig = [
   {
     title: 'Home',
-    path: '/Dashboard/app',
+    path: '/dashboard/app',
     icon: getIcon('eva:pie-chart-2-fill'),
   },
   {
     title: 'Request Analysis',
-    path: '/Dashboard/requests',
+    path: '/dashboard/requests',
     icon: getIcon('fluent:drink-wine-24-filled'),
   },
   {
     title: 'Upload Analysis',
-    path: '/Dashboard/upload',
+    path: '/dashboard/upload',
     icon: getIcon('ic:baseline-upload-file'),
   },
   {
     title: 'View Analysis',
-    path: '/Dashboard/analysis',
+    path: '/dashboard/analysis',
     icon: getIcon('eva:file-text-fill'),
   },
   {
