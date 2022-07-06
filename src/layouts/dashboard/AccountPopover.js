@@ -36,27 +36,22 @@ const MENU_OPTIONS = [
   {
     label: 'Home',
     icon: 'eva:home-fill',
-    linkTo: '/app',
+    linkTo: '/dashboard/app',
   },
   {
     label: 'Request Analysis',
-    linkTo: '/requests',
+    linkTo: '/dashboard/requests',
     icon: getIcon('fluent:drink-wine-24-filled'),
   },
   {
     label: 'Upload Analysis',
-    linkTo: '/upload',
+    linkTo: '/dashboard/upload',
     icon: getIcon('ic:baseline-upload-file'),
   },
   {
     label: 'View Analysis',
-    linkTo: '/analysis',
+    linkTo: '/dashboard/analysis',
     icon: getIcon('eva:file-text-fill'),
-  },
-  {
-    label: 'Settings',
-    icon: 'eva:settings-2-fill',
-    linkTo: '#',
   },
 ];
 
@@ -135,8 +130,8 @@ export default function AccountPopover() {
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <MenuItem onClick={() => auth.signOut()} sx={{ m: 1 }}  >
-          <a href= '/login'>
+        <MenuItem sx={{ m: 1 }}  >
+          <a href= '/dashboard/login'>
           Logout
           </a>
         </MenuItem>
