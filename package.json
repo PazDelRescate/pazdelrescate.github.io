@@ -4,7 +4,7 @@
   "licence": "MIT",
   "version": "1.4.0",
   "private": false,
-  "homepage": "https://pazdelrescate.github.io/",
+  "homepage": "https://pazdelrescate.github.io",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
