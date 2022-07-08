@@ -22,7 +22,7 @@ import DashboardApp from './pages/DashboardApp';
 export default function Router() {
   return useRoutes([
     {
-      path: 'www.reaktlab.com/dashboard',
+      path: 'https://www.reaktlab.com/dashboard',
       element: <DashboardLayout />,
       children: [
         { path: 'app', element: <DashboardApp /> },
@@ -38,7 +38,7 @@ export default function Router() {
       ],
     },
     {
-      path: '/',
+      path: 'https://www.reaktlab.com/',
       element: <LogoOnlyLayout />,
       children: [
         { path: '/', element: <Navigate to="/dashboard/app" /> },
