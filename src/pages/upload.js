@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Page from '../components/Page';
 import Post from './Post';
+import Iconify from '../components/Iconify';
 import { db } from './firebase';
 import ImageUpload from './ImageUpload';
 
@@ -72,9 +73,10 @@ export default function Upload() {
     <Page title="Upload Daily Analysis">
       <Container>
        <h1>Daily Analysis</h1>
+      </Container>
 
-       <div>
-      <Button onClick={handleOpen}>Upload New Analysis</Button>
+    <Container>
+      <Button onClick={handleOpen} variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>Upload New Analysis</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -85,11 +87,12 @@ export default function Upload() {
         < ImageUpload />
        </Box>
       </Modal>
-    </div>
+    </Container>
 
+      <Container mt={5}>
        {
          posts.map(({id, post}) => (
-           <Post key ={id} Username={post.Username} Caption={post.Caption} ImageUrl={post.ImageUrl}/>
+           <Post key ={id} Username={post.Username} Caption={post.Caption} ImageUrl={post.ImageUrl} />
 
          ))
        }
