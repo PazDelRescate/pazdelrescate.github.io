@@ -32,14 +32,14 @@ const users = [...Array(24)].map(() => ({
     '23GBSB-WaldenPond',
     '23TWCH-GreatGatsby',
   ]),
-  company: sample([
+  owner: sample([
     'Abbots Landing',
     'Gumdlock Bumshoe',
     'Imageree'
   ]),
-  date: faker.date.between('2020-01-01T00:00:00.000Z', '2022-06-017T00:00:00.000Z'),
+  last: faker.date.between('2020-01-01T00:00:00.000Z', '2022-06-017T00:00:00.000Z'),
   status: sample(['completed', 'pending']),
-  role: sample([
+  location: sample([
     'Abbots Landing',
     'Gumdlock Bumshoe',
     'Imageree'
@@ -60,7 +60,7 @@ const users = [...Array(24)].map(() => ({
     '7.0'
   ]),
   RS: sample([
-    '0,01',
+    '0.01',
     '0.99',
     '0.67'
   ]),

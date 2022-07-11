@@ -1,6 +1,6 @@
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // material
 import {
@@ -18,6 +18,8 @@ import {
   TableContainer,
   TablePagination,
 } from '@mui/material';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 import { fDate } from '../utils/formatTime';
 // components
 import Page from '../components/Page';
@@ -28,11 +30,12 @@ import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashboard/user';
 // mock
 import USERLIST from '../_mock/user';
+import Requestsadd from './requestsadd';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'blend', label: 'Blend', alignRight: false },
+  { id: 'name', label: 'Blend', alignRight: false },
   { id: 'owner', label: 'Owner', alignRight: false },
   { id: 'location', label: 'Location', alignRight: false },
   { id: 'last', label: 'Last Analyzed', alignRight: false },
@@ -133,6 +136,22 @@ export default function User() {
 
   const isUserNotFound = filteredUsers.length === 0;
 
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
   return (
     <Page title="Analysis Request">
       <Container>
@@ -140,9 +159,17 @@ export default function User() {
           <Typography variant="h4" gutterBottom>
             Current Jobs
           </Typography>
-          <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
-            Add Request
-          </Button>
+          <Button onClick={handleOpen} variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>New Requests</Button>
+            <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+          <Box sx={style}>
+            < Requestsadd />
+          </Box>
+          </Modal>
         </Stack>
 
         <Card>
@@ -162,7 +189,7 @@ export default function User() {
                 />
                 <TableBody>
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, role, status, company, avatarUrl, date } = row;
+                    const { id, name, avatarUrl, date, owner, location, last, status } = row;
                     const isItemSelected = selected.indexOf(name) !== -1;
 
                     return (
@@ -185,9 +212,9 @@ export default function User() {
                             </Typography>
                           </Stack>
                         </TableCell>
-                        <TableCell align="left">{company}</TableCell>
-                        <TableCell align="left">{role}</TableCell>
-                        <TableCell align="left">{fDate(date)}</TableCell>
+                        <TableCell align="left">{owner}</TableCell>
+                        <TableCell align="left">{location}</TableCell>
+                        <TableCell align="left">{fDate(last)}</TableCell>
                         <TableCell align="left">
                           <Label variant="ghost" color={(status === 'pending' && 'error') || 'success'}>
                             {sentenceCase(status)}

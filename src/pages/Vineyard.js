@@ -5,6 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import {
   Card,
   Table,
+  Grid,
   Stack,
   Button,
   Checkbox,
@@ -19,11 +20,12 @@ import {
 // components
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import {AppWebsiteVisits} from '../sections/@dashboard/app';
 import Page from '../components/Page';
 import Scrollbar from '../components/Scrollbar';
 import Iconify from '../components/Iconify';
 import SearchNotFound from '../components/SearchNotFound';
-import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashboard/user';
+import { UserListHead, VineyardToolbar, UserMoreMenu } from '../sections/@dashboard/user';
 // mock
 import USERLIST from '../_mock/user';
 import Vineyardadd from './vineyardadd';
@@ -135,6 +137,10 @@ export default function User() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [open1, setOpen1] = React.useState(false);
+  const handleOpen1 = () => setOpen1(true);
+  const handleClose1 = () => setOpen1(false);
   
   const style = {
     position: 'absolute',
@@ -142,6 +148,18 @@ export default function User() {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const style1 = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 750,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -169,7 +187,7 @@ export default function User() {
         </Stack>
 
         <Card>
-          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
+          <VineyardToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
 
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
@@ -248,6 +266,57 @@ export default function User() {
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Card>
+        <Stack direction="row" alignItems="center" justifyContent="right" mt={5}>
+        <Button align="right" onClick={handleOpen1} variant="contained" startIcon={<Iconify icon="mdi:fruit-grapes-outline" />}>Vineyard Trends</Button>
+            <Modal
+            open={open1}
+            onClose={handleClose1}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+          <Box sx={style1}>
+          <Grid item xs={12} md={6} lg={8}>
+            <AppWebsiteVisits
+              title="Vineyard Ripening"
+              subheader="Rhymefarm Vineyard"
+              chartLabels={[
+                '08/25/2022',
+                '09/01/2022',
+                '09/04/2022',
+                '09/07/2022',
+                '09/10/2022',
+                '09/12/2022',
+                '09/17/2022',
+                '09/20/2022',
+                '09/22/2022',
+                '09/23/2022',
+                '09/25/2022',
+              ]}
+              chartData={[
+                {
+                  name: 'Cabernet Sauvignon',
+                  type: 'column',
+                  fill: 'solid',
+                  data: [2, 6, 9, 12, 13, 16, 18, 19, 23, 24, 26],
+                },
+                {
+                  name: 'Chardonnay',
+                  type: 'area',
+                  fill: 'gradient',
+                  data: [5, 11, 12, 13, 14, 18, 19, 20, 21, 22, 25],
+                },
+                {
+                  name: 'Merlot',
+                  type: 'line',
+                  fill: 'solid',
+                  data: [3, 7, 14, 16, 18, 20, 21, 22, 23, 24, 25],
+                },
+              ]}
+            />
+          </Grid>
+          </Box>
+          </Modal>
+        </Stack>
       </Container>
     </Page>
   );

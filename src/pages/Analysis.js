@@ -1,5 +1,5 @@
 import { filter } from 'lodash';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // material
 import {
@@ -17,6 +17,8 @@ import {
   TablePagination,
 } from '@mui/material';
 // components
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 import Page from '../components/Page';
 import Scrollbar from '../components/Scrollbar';
 import Iconify from '../components/Iconify';
@@ -24,17 +26,18 @@ import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashboard/user';
 // mock
 import USERLIST from '../_mock/user';
+import Dailyadd from './dailyadd';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'blend', label: 'Blend', alignRight: false },
+  { id: 'name', label: 'Blend', alignRight: false },
   { id: 'FSO2', label: 'FSO2', alignRight: false },
   { id: 'pH', label: 'pH', alignRight: false },
   { id: 'TA', label: 'TA', alignRight: false },
-  { id: 'Residual Sugar(g/L)', label: 'Residual Sugar (g/L)', alignRight: false },
-  { id: 'Malic Acid(g/L)', label: 'Malic Acid(g/L)', alignRight: false },
-  { id: 'Volatile Acidity (g/L)', label: 'Volatile Acidity (g/L)', alignRight: false },
+  { id: 'RS', label: 'Residual Sugar (g/L)', alignRight: false },
+  { id: 'ML', label: 'Malic Acid(g/L)', alignRight: false },
+  { id: 'VA', label: 'Volatile Acidity (g/L)', alignRight: false },
   { id: '' },
 ];
 
@@ -131,16 +134,40 @@ export default function User() {
 
   const isUserNotFound = filteredUsers.length === 0;
 
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
   return (
-    <Page title="Daily Analysis">
+    <Page title="Blends">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Daily Analysis
+            Blends
           </Typography>
-          <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
-            Add Analysis
-          </Button>
+          <Button onClick={handleOpen} variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>Add New Analysis</Button>
+            <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+          <Box sx={style}>
+            < Dailyadd />
+          </Box>
+          </Modal>
         </Stack>
 
         <Card>
